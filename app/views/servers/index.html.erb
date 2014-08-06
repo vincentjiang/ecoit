@@ -1,0 +1,53 @@
+
+<% @servers.each do |server| %>
+
+  <div class="resource-box">
+    <span class="title"><%= server.name %></span>
+    
+    <table>
+      <tr>
+        <td class="item c7">类型：</td>
+        <td colspan=""><%= server.kind %></td>
+        <td class="item c7">品牌型号：</td>
+        <td colspan=""><%= server.brand + " " + server.smodel %></td>
+      </tr>
+      <tr>
+        <td class="item c7">IP地址：</td>
+        <td><%= server.ip %></td>
+        <td class="item c7">iLO地址：</td>
+        <td><%= server.ilo %></td>
+      </tr>
+      <tr>
+        <td class="item c7">操作系统：</td>
+        <td colspan="5"><%= server.os %></td>
+      </tr>
+      <tr>
+        <td class="item c7">硬件配置：</td>
+        <td colspan=""><%= server.cpu %></td>
+        <td class="item c7">内存：</td>
+        <td colspan=""><%= server.ram %></td>
+        <td class="item c7">硬盘：</td>
+        <td colspan=""><%= server.harddisk %></td>
+      </tr>
+      <tr>
+        <td class="item c7">序列号：</td>
+        <td colspan=""><%= server.sn %></td>
+        <td class="item c7">服务到期：</td>
+        <td colspan=""><%= server.expire %></td>
+      </tr>
+      <tr>
+        <td class="item c7">位置：</td>
+        <td colspan=""><%= server.position %></td>
+      </tr>
+      <tr>
+        <td class="item c7">备注：</td>
+        <td colspan="5"><%= server.remark %></td>
+      </tr>
+    </table>
+    
+    <%= link_to '修改', edit_server_path(server), class: 'edit' %>
+    <%= link_to '删除', server, method: :delete, class: "del", data: {confirm: "您确定要删除吗？"} %>
+
+  </div>
+
+<% end %>

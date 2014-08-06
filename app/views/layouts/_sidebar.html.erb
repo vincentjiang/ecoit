@@ -1,0 +1,29 @@
+<div id="sidebar">
+
+  <dl>
+    <dt>新建资产<em></em></dt>
+    <dd>
+      <a href="<%= new_server_path %>"><div>服务器</div></a>
+      <a href="<%= new_server_path %>"><div>网络设备</div></a>
+      <a href="<%= new_system_path %>"><div>应用系统</div></a>
+      <div>软件</div>
+    </dd>
+  </dl>
+
+  <% if @controller_name.present? %>
+  <hr>
+
+  <dl>    
+    <dt><%= @controller_name %><em></em></dt>
+    <dd>
+      <% @resources.each do |resource| %>
+
+        <div><%= resource.name %></div>
+        
+      <% end %>
+    </dd>
+  </dl>
+
+  <% end %>
+
+</div>

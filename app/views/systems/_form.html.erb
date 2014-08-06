@@ -1,0 +1,37 @@
+<%= form_for(@system) do |f| %>
+  <% if @system.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@system.errors.count, "error") %> prohibited this system from being saved:</h2>
+
+      <ul>
+      <% @system.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "名称" %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :link, "链接" %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :username, "账号" %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password, "密码" %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :remark, "备注" %><br>
+    <%= f.text_area :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit "提交", disable_with: "正在努力提交中……", class: "btn-success" %><%= link_to "取消", systems_path, class: "btn-cancel" %>
+  </div>
+<% end %>
