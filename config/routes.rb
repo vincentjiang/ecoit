@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :softwares
+
+  resources :networks
+
   resources :servers
 
   resources :systems

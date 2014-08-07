@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806091635) do
+ActiveRecord::Schema.define(version: 20140806151052) do
+
+  create_table "networks", force: true do |t|
+    t.string   "name"
+    t.string   "kind"
+    t.string   "ip"
+    t.string   "sn"
+    t.date     "expire"
+    t.string   "position"
+    t.text     "remark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "servers", force: true do |t|
     t.string   "name"
@@ -27,6 +39,16 @@ ActiveRecord::Schema.define(version: 20140806091635) do
     t.string   "sn"
     t.date     "expire"
     t.string   "position"
+    t.text     "remark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "softwares", force: true do |t|
+    t.string   "name"
+    t.string   "kind"
+    t.string   "sn"
+    t.date     "expire"
     t.text     "remark"
     t.datetime "created_at"
     t.datetime "updated_at"

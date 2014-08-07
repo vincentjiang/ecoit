@@ -17,7 +17,8 @@
 
 $(function() {
 	var $dt = $('#sidebar dt');
-	$dt.click(function(event) {
+	$dt.on('click', function(event) {
+		event.preventDefault();
 		$(this).children('em').toggleClass('transform');
 		$(this).siblings('dd').slideToggle('fast');
 	});

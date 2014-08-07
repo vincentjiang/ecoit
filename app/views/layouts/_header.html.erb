@@ -9,6 +9,12 @@
 			<li><a href="">关于</a></li>
 		</ul>
 
-		<a href="" class="login">VincentJiang</a>
+		<% unless session[:user_id] %>
+			<a href="" class="login">登录</a>
+		<% else %>
+			<a href="" class="login">VincentJiang</a>
+		<% end %>
+
+		
 	</div>
 </div>

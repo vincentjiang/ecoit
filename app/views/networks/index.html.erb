@@ -1,0 +1,35 @@
+
+<% @networks.each do |network| %>
+
+  <div class="resource-box">
+    <span class="title"><%= network.name %></span>
+    
+    <table>
+      <tr>
+        <td class="item c7">类型：</td>
+        <td colspan=""><%= network.kind %></td>
+        <td class="item c7">IP地址：</td>
+        <td colspan=""><%= network.ip %></td>
+      </tr>
+      <tr>
+        <td class="item c7">序列号：</td>
+        <td><%= network.sn %></td>
+        <td class="item c7">服务到期：</td>
+        <td><%= network.expire %></td>
+      </tr>
+      <tr>
+        <td class="item c7">位置：</td>
+        <td colspan="3"><%= network.position %></td>
+      </tr>
+      <tr>
+        <td class="item c7">备注：</td>
+        <td colspan="3"><%= network.remark %></td>
+      </tr>
+    </table>
+    
+    <%= link_to '修改', edit_network_path(network), class: 'edit' %>
+    <%= link_to '删除', network, method: :delete, class: "del", data: {confirm: "您确定要删除吗？"} %>
+
+  </div>
+
+<% end %>

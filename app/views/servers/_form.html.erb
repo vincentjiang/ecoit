@@ -56,8 +56,7 @@
     <%= f.text_field :sn %>
   </div>
   <div class="field">
-    <%= f.label :expire, "服务到期日期" %><br>
-    
+    <%= f.label :expire, "服务到期" %><br>
     <%= f.date_select :expire, { :order => [:year, :month, :day], :start_year => Time.now.year, :end_year => Time.now.year + 10}, class: 'datepiker' %>
   </div>
   <div class="field">
