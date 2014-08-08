@@ -15,11 +15,18 @@
 //= require turbolinks
 //= require_tree .
 
+// $(function() {
+// 	var $dt = $('#sidebar dt');
+// 	$dt.on('click', function(event) {
+// 		event.preventDefault();
+// 		$(this).children('em').toggleClass('transform');
+// 		$(this).siblings('dd').slideToggle('fast');
+// 	});
+// });
+
 $(function() {
-	var $dt = $('#sidebar dt');
-	$dt.on('click', function(event) {
-		event.preventDefault();
-		$(this).children('em').toggleClass('transform');
-		$(this).siblings('dd').slideToggle('fast');
-	});
+	$sidebar_list = $('.sidebar-list');
+	$sidebar_list.parent('ul').hide();
+	$sidebar_list.parent('ul').fadeIn('slow');
+
 });

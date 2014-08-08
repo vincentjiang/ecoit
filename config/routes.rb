@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search' => 'search#search', as: 'search'
+
   resources :softwares
 
   resources :networks
@@ -6,6 +8,11 @@ Rails.application.routes.draw do
   resources :servers
 
   resources :systems
+
+  get '403', :to => 'application#render_403'
+  get '404', :to => 'application#render_404'
+  get '422', :to => 'application#render_422'
+  get '500', :to => 'application#render_500'
 
   get 'index' => 'pages#index'
   root 'pages#index'

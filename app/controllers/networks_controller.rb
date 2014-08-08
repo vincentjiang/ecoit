@@ -1,11 +1,15 @@
 class NetworksController < ApplicationController
   before_action :set_network, only: [:show, :edit, :update, :destroy]
-  before_action :set_resources, :controller_name
+  before_action :sidebar_list, only: [:index, :show, :new, :edit]
 
   # GET /networks
   # GET /networks.json
   def index
     @networks = Network.all.order(:name)
+  end
+
+  def show
+    
   end
 
   # GET /networks/new
@@ -24,7 +28,7 @@ class NetworksController < ApplicationController
 
     respond_to do |format|
       if @network.save
-        format.html { redirect_to networks_url, notice: 'Network was successfully created.' }
+        format.html { redirect_to @network, notice: 'Network was successfully created.' }
         format.json { render :show, status: :created, location: @network }
       else
         format.html { render :new }
@@ -38,7 +42,7 @@ class NetworksController < ApplicationController
   def update
     respond_to do |format|
       if @network.update(network_params)
-        format.html { redirect_to networks_url, notice: 'Network was successfully updated.' }
+        format.html { redirect_to @network, notice: 'Network was successfully updated.' }
         format.json { render :show, status: :ok, location: @network }
       else
         format.html { render :edit }
@@ -63,12 +67,9 @@ class NetworksController < ApplicationController
       @network = Network.find(params[:id])
     end
 
-    def set_resources
+    def sidebar_list
       @resources = Network.all.order(:name)
-    end
-
-    def controller_name
-      @controller_name = "网络设备"
+      @model_name = "网络设备"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

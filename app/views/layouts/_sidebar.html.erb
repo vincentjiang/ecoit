@@ -1,28 +1,27 @@
 <div id="sidebar">
 
-  <dl>
-    <dt>新建资产<em></em></dt>
-    <dd>
-      <a href="<%= new_server_path %>"><div>服务器</div></a>
-      <a href="<%= new_network_path %>"><div>网络设备</div></a>
-      <a href="<%= new_system_path %>"><div>应用系统</div></a>
-      <a href="<%= new_software_path %>"><div>软件</div></a>
-    </dd>
-  </dl>
+  <ul>
+    <h2>新建资产</h2>
+    <li><%= link_to "服务器", new_server_path %></li>
+    <li><%= link_to "网络设备", new_network_path %></li>
+    <li><%= link_to "应用系统", new_system_path %></li>
+    <li><%= link_to "软件", new_software_path %></li>
+  </ul>
 
-  <% if @controller_name.present? %>
-  <hr>
+  <% if @resources.present? %>
 
-  <dl>    
-    <dt><%= @controller_name %><em></em></dt>
-    <dd>
+    <hr>
+
+    <ul>    
+      <h2 class="sidebar-list"><%= @model_name %></h2>
+
       <% @resources.each do |resource| %>
-
-        <div><%= resource.name %></div>
+        
+        <li><%= link_to resource.name, resource %></li>
         
       <% end %>
-    </dd>
-  </dl>
+
+    </ul>
 
   <% end %>
 

@@ -1,11 +1,15 @@
 class SystemsController < ApplicationController
-  before_action :set_system, only: [:edit, :update, :destroy]
-  before_action :set_resources, :controller_name
+  before_action :set_system, only: [:show, :edit, :update, :destroy]
+  before_action :sidebar_list
 
   # GET /systems
   # GET /systems.json
   def index
     @systems = System.all.order(:name)
+  end
+
+  def show
+    
   end
 
   # GET /systems/new
@@ -24,7 +28,7 @@ class SystemsController < ApplicationController
 
     respond_to do |format|
       if @system.save
-        format.html { redirect_to systems_url, notice: 'System was successfully created.' }
+        format.html { redirect_to @system, notice: 'System was successfully created.' }
         format.json { render :show, status: :created, location: @system }
       else
         format.html { render :new }
@@ -38,7 +42,7 @@ class SystemsController < ApplicationController
   def update
     respond_to do |format|
       if @system.update(system_params)
-        format.html { redirect_to systems_url, notice: 'System was successfully updated.' }
+        format.html { redirect_to @system, notice: 'System was successfully updated.' }
         format.json { render :show, status: :ok, location: @system }
       else
         format.html { render :edit }
@@ -63,12 +67,9 @@ class SystemsController < ApplicationController
       @system = System.find(params[:id])
     end
 
-    def set_resources
+    def sidebar_list
       @resources = System.all.order(:name)
-    end
-
-    def controller_name
-      @controller_name = "应用系统"
+      @model_name = "应用系统"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

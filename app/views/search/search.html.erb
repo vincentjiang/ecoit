@@ -1,0 +1,164 @@
+<% if @servers %>
+	
+	<% @servers.each do |server| %>
+
+	  <div class="resource-box">
+	    <span class="title"><%= server.name %></span>
+	    
+	    <table>
+	      <tr>
+	        <td class="item c7">类型：</td>
+	        <td colspan=""><%= server.kind %></td>
+	        <td class="item c7">品牌型号：</td>
+	        <td colspan=""><%= server.brand + " " + server.smodel %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">IP地址：</td>
+	        <td><%= server.ip %></td>
+	        <td class="item c7">iLO地址：</td>
+	        <td><%= server.ilo %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">操作系统：</td>
+	        <td colspan="5"><%= server.os %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">硬件配置：</td>
+	        <td colspan=""><%= server.cpu %></td>
+	        <td class="item c7">内存：</td>
+	        <td colspan=""><%= server.ram %></td>
+	        <td class="item c7">硬盘：</td>
+	        <td colspan=""><%= server.harddisk %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">序列号：</td>
+	        <td colspan=""><%= server.sn %></td>
+	        <td class="item c7">服务到期：</td>
+	        <td colspan=""><%= server.expire %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">位置：</td>
+	        <td colspan=""><%= server.position %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">备注：</td>
+	        <td colspan="5"><%= server.remark %></td>
+	      </tr>
+	    </table>
+
+	    <%= link_to '修改', edit_server_path(server), class: 'edit' %>
+	    <%= link_to '删除', server, method: :delete, class: "del", data: {confirm: "您确定要删除吗？"} %>
+
+	  </div>
+
+	<% end %>
+<% end %>
+
+<% if @networks %>
+	
+	<% @networks.each do |network| %>
+
+	  <div class="resource-box">
+	    <span class="title"><%= network.name %></span>
+	    
+	    <table>
+	      <tr>
+	        <td class="item c7">类型：</td>
+	        <td colspan=""><%= network.kind %></td>
+	        <td class="item c7">IP地址：</td>
+	        <td colspan=""><%= network.ip %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">序列号：</td>
+	        <td><%= network.sn %></td>
+	        <td class="item c7">服务到期：</td>
+	        <td><%= network.expire %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">位置：</td>
+	        <td colspan="3"><%= network.position %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">备注：</td>
+	        <td colspan="3"><%= network.remark %></td>
+	      </tr>
+	    </table>
+
+	    <%= link_to '修改', edit_network_path(network), class: 'edit' %>
+	    <%= link_to '删除', network, method: :delete, class: "del", data: {confirm: "您确定要删除吗？"} %>
+
+	  </div>
+
+	<% end %>
+
+<% end %>
+
+<% if @systems %>
+	
+	<% @systems.each do |system| %>
+
+	  <div class="resource-box">
+	    <span class="title"><%= system.name %></span>
+	    
+	    <table>
+	      <tr>
+	        <td class="item c7">链接：</td>
+	        <td colspan="3"><%= system.link %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">账号：</td>
+	        <td><%= system.username %></td>
+	        <td class="item c7">密码：</td>
+	        <td><%= system.password %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">备注：</td>
+	        <td colspan="3"><%= system.remark %></td>
+	      </tr>
+	    </table>
+
+	    <%= link_to '修改', edit_system_path(system), class: 'edit' %>
+	    <%= link_to '删除', system, method: :delete, class: "del", data: {confirm: "您确定要删除吗？"} %>
+
+	  </div>
+
+	<% end %>
+	
+<% end %>
+
+<% if @softwares %>
+	
+	<% @softwares.each do |software| %>
+
+	  <div class="resource-box">
+	    <span class="title"><%= software.name %></span>
+	    
+	    <table>
+	      <tr>
+	        <td class="item c7">类型：</td>
+	        <td colspan=""><%= software.kind %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">序列号：</td>
+	        <td><%= software.sn %></td>
+	        <td class="item c7">服务到期：</td>
+	        <td><%= software.expire %></td>
+	      </tr>
+	      <tr>
+	        <td class="item c7">备注：</td>
+	        <td colspan="3"><%= software.remark %></td>
+	      </tr>
+	    </table>
+	    
+	    <%= link_to '修改', edit_software_path(software), class: 'edit' %>
+	    <%= link_to '删除', software, method: :delete, class: "del", data: {confirm: "您确定要删除吗？"} %>
+
+	  </div>
+
+	<% end %>
+
+<% end %>
+
+<% if @servers.empty? && @networks.empty? && @systems.empty? && @softwares.empty? %>
+	<h1>没有找到任何数据。</h1>
+<% end %>

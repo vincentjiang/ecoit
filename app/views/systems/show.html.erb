@@ -1,0 +1,29 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<div class="resource-box">
+  <span class="title"><%= @system.name %></span>
+  
+  <table>
+    <tr>
+      <td class="item c7">链接：</td>
+      <td colspan="3"><%= @system.link %></td>
+    </tr>
+    <tr>
+      <td class="item c7">账号：</td>
+      <td><%= @system.username %></td>
+      <td class="item c7">密码：</td>
+      <td><%= @system.password %></td>
+    </tr>
+    <tr>
+      <td class="item c7">备注：</td>
+      <td colspan="3"><%= @system.remark %></td>
+    </tr>
+  </table>
+  
+  <%= link_to '修改', edit_system_path(@system), class: 'edit' %>
+  <%= link_to '删除', @system, method: :delete, class: "del", data: {confirm: "您确定要删除吗？"} %>
+
+</div>
+

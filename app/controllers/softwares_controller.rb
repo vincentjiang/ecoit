@@ -1,6 +1,6 @@
 class SoftwaresController < ApplicationController
   before_action :set_software, only: [:show, :edit, :update, :destroy]
-  before_action :set_resources, :controller_name
+  before_action :sidebar_list
 
   # GET /softwares
   # GET /softwares.json
@@ -8,6 +8,10 @@ class SoftwaresController < ApplicationController
     @softwares = Software.all.order(:name)
   end
 
+  def show
+    
+  end
+  
   # GET /softwares/new
   def new
     @software = Software.new
@@ -24,7 +28,7 @@ class SoftwaresController < ApplicationController
 
     respond_to do |format|
       if @software.save
-        format.html { redirect_to softwares_url, notice: 'Software was successfully created.' }
+        format.html { redirect_to @software, notice: 'Software was successfully created.' }
         format.json { render :show, status: :created, location: @software }
       else
         format.html { render :new }
@@ -38,7 +42,7 @@ class SoftwaresController < ApplicationController
   def update
     respond_to do |format|
       if @software.update(software_params)
-        format.html { redirect_to softwares_url, notice: 'Software was successfully updated.' }
+        format.html { redirect_to @software, notice: 'Software was successfully updated.' }
         format.json { render :show, status: :ok, location: @software }
       else
         format.html { render :edit }
@@ -63,12 +67,9 @@ class SoftwaresController < ApplicationController
       @software = Software.find(params[:id])
     end
 
-    def set_resources
+    def sidebar_list
       @resources = Software.all.order(:name)
-    end
-
-    def controller_name
-      @controller_name = "软件"
+      @model_name = "软件"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

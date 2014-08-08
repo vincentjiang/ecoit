@@ -1,0 +1,26 @@
+
+
+  <div class="resource-box">
+    <span class="title"><%= @software.name %></span>
+    
+    <table>
+      <tr>
+        <td class="item c7">类型：</td>
+        <td colspan=""><%= @software.kind %></td>
+      </tr>
+      <tr>
+        <td class="item c7">序列号：</td>
+        <td><%= @software.sn %></td>
+        <td class="item c7">服务到期：</td>
+        <td><%= @software.expire %></td>
+      </tr>
+      <tr>
+        <td class="item c7">备注：</td>
+        <td colspan="3"><%= @software.remark %></td>
+      </tr>
+    </table>
+    
+    <%= link_to '修改', edit_software_path(@software), class: 'edit' %>
+    <%= link_to '删除', @software, method: :delete, class: "del", data: {confirm: "您确定要删除吗？"} %>
+
+  </div>
